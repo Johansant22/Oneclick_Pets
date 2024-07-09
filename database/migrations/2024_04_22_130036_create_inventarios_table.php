@@ -28,6 +28,14 @@ return new class extends Migration
             $table->string('total_salidas');
             $table->float('precio_total_salidas');
             $table->timestamps();
+
+            //relacion 1:M con la tabla person
+            $table->unsignedBigInteger('person');
+            $table->foreignId('person')->references('id')->on('people')->onDelete('cascade')->onUpdate('cascade');
+            //relación 1:M con la tabla productos
+            $table->unsignedBigInteger('producto');
+            $table->foreignId('producto')->references('id')->on('productos')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

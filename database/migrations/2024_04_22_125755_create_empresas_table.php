@@ -19,6 +19,9 @@ return new class extends Migration
             $table->integer('nit');
             $table->string('objeto_social');
             $table->timestamps();
+            //relacion 1:M con la tabla person
+            $table->unsignedBigInteger('person');
+            $table->foreignId('person')->references('id')->on('people')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

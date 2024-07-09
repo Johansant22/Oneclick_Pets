@@ -16,6 +16,10 @@ return new class extends Migration
         Schema::create('catalogos', function (Blueprint $table) {
             $table->id();
             $table->string('tipo_produto');
+
+            //relación 1:M con la tabla inventario
+            $table->unsignedBigInteger('inventario');
+            $table->foreignId('inventario')->references('id')->on('inventarios')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
