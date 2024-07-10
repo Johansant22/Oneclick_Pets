@@ -18,6 +18,12 @@ return new class extends Migration
             $table->integer('cantidad_productos');
             $table->integer('total_productos');
             $table->timestamps();
+            //Relación 1:M con la tabla inventario
+            $table->unsignedBigInteger('inventario');
+            $table->foreignId('inventario')->references('id')->on('inventarios')->onDelete('cascade')->onUpdate('cascade');
+             //Relación 1:1 con la tabla cabeza_factura
+             $table->unsignedBigInteger('cabeza_factura');
+             $table->foreignId('cabeza_factura')->references('id')->on('cabeza_facturas')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

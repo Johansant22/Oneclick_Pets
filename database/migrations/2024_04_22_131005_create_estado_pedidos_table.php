@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('comentario_pedido'); //es el estado del pedido (entregado, en camino, etc...)
             $table->timestamps();
+            //Relación 1:1 con cabeza de factura
+            $table->unsignedBigInteger('cabeza_factura');
+            $table->foreignId('cabeza_factura')->references('id')->on('cabeza_facturas')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

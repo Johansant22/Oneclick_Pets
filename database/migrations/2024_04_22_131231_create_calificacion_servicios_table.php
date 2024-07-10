@@ -19,6 +19,9 @@ return new class extends Migration
             $table->integer('calificacion');
             $table->string('comentario_servicio');
             $table->timestamps();
+            //Relación 1:M con control de comentarios
+            $table->unsignedBigInteger('control_comentarios');
+            $table->foreignId('control_comentarios')->references('id')->on('control_comentarios')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

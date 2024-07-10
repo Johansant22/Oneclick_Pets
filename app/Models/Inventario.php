@@ -25,6 +25,15 @@ class Inventario extends Model
     public function catalogo() {
         return $this->belongsTo('App\Models\Catalogo');
     }
+     //Relaciones a nivel de modelo 1:M
+    //con la tabla movimientos
 
+    public function movimientos() {
+        return $this->hasMany('App\Models\Movimientos');
+    }
+    //Relación 1:M con cuerpo factura
+    public function cuerpoFactura() {
+        return $this->belongsTo('App\Models\Cuerpo_factura');
+    }
 
 }

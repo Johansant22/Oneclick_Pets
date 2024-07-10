@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('nombre_movimiento');
             $table->string('descripcion_movimiento');
             $table->timestamps();
+            //Relación 1:M con tabla control devoluciones
+            $table->unsignedBigInteger('control_devoluciones');
+            $table->foreignId('control_devoluciones')->references('id')->on('control_devoluciones')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

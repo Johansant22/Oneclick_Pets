@@ -35,6 +35,9 @@ return new class extends Migration
             //relación 1:M con la tabla productos
             $table->unsignedBigInteger('producto');
             $table->foreignId('producto')->references('id')->on('productos')->onDelete('cascade')->onUpdate('cascade');
+            //Relación 1:M con tabla movimiento
+            $table->unsignedBigInteger('movimiento');
+            $table->foreignId('movimiento')->references('id')->on('movimientos')->onDelete('cascade')->onUpdate('cascade');
 
         });
     }

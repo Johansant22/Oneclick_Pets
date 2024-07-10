@@ -15,8 +15,11 @@ return new class extends Migration
     {
         Schema::create('sistema_pagos', function (Blueprint $table) {
             $table->id();
-            $table->string('forma_pago',45); //Es para elegir la forma de pago. 
+            $table->string('forma_pago',45); //Es para elegir la forma de pago.
             $table->timestamps();
+            //Relación 1:M con cabeza factura
+            $table->unsignedBigInteger('cabeza_factura');
+            $table->foreignId('cabeza_factura')->references('id')->on('cabeza_facturas')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
